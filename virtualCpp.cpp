@@ -1,9 +1,17 @@
 #include <iostream>
 
+/*
+- Virtual functions ensure that the correct function is called for an object, regardless of the type of reference (or pointer) used for function call.
+- They are mainly used to achieve Runtime polymorphism
+- Functions are declared with a virtual keyword in base class.
+- The resolving of function call is done at runtime.
+*/
+
 class Base_class{
     protected:
         double attr1;
         double attr2;
+        
     public:
         Base_class(double p_attr1, double p_attr2)
         {

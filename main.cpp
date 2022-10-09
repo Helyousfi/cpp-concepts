@@ -18,11 +18,13 @@
 
 /******************* Define the base class *******************/ 
 class Person { 
+
     static int person_count;
     protected: 
         std::string name; // name
         std::string idNum; // university ID number
         int age; // Age
+    
     public:
         // Functions are declared public 
         Person(std::string name, std::string idNum, int age); // constructor
