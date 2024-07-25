@@ -9,7 +9,7 @@ int main() {
     std::cout << "Element at index 0 using []: " << numbers[0] << std::endl; // No bound checking
 
     // Access elements using the at() method
-    std::cout << "Element at index 1 using at(): " << numbers.at(1) << std::endl;
+    std::cout << "Element at index 1 using at(): " << numbers.at(1) << std::endl; // You can do  numbers.at(1) = 5
 
     // Access the first element using front()
     std::cout << "First element using front(): " << numbers.front() << std::endl;
