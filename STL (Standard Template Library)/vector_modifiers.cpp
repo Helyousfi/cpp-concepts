@@ -1,3 +1,7 @@
+/*
+    Modifiers for a vector :
+        clear, push_back, emplace_back ...
+*/
 #include <iostream>
 #include <vector>
 
