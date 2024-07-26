@@ -31,7 +31,7 @@ The C++ Standard Template Library (STL) provides a rich set of template classes 
 
 ## Introduction
 
-The STL containers are designed to handle various data storage needs. They are categorized based on their functionality and underlying implementation. Understanding these categories helps in choosing the appropriate container for different scenarios, balancing performance and usability.
+The STL containers are designed to handle various data storage needs. They are categorized based on their functionality and underlying implementation.
 
 ## Sequence Containers
 
