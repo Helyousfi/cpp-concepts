@@ -4,10 +4,8 @@
 int main() {
     // Declare and initialize a forward list
     std::forward_list<int> fwd_list = {1, 2, 3, 4, 5};
-
     // Insert elements at the beginning
     fwd_list.push_front(0);
-
     // Insert elements after a specific element
     auto it = fwd_list.begin();
     ++it; // Move iterator to the second position
