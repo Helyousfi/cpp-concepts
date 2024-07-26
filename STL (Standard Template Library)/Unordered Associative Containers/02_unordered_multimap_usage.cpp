@@ -48,4 +48,23 @@ int main() {
 
     // Removing elements with a specific key
     myunorderedmultimap.erase("apple");
-    std
+    std::cout << "\nAfter erasing 'apple':\n";
+    for (const auto& elem : myunorderedmultimap) {
+        std::cout << elem.first << ": " << elem.second << '\n';
+    }
+
+    // Size of the unordered_multimap
+    std::cout << "\nSize of the unordered multimap: " << myunorderedmultimap.size() << '\n';
+
+    // Using iterators
+    std::cout << "\nUnordered multimap elements using iterators:\n";
+    for (std::unordered_multimap<std::string, int>::iterator it = myunorderedmultimap.begin(); it != myunorderedmultimap.end(); ++it) {
+        std::cout << it->first << ": " << it->second << '\n';
+    }
+
+    // Clearing the unordered_multimap
+    myunorderedmultimap.clear();
+    std::cout << "\nAfter clearing, size of the unordered multimap: " << myunorderedmultimap.size() << '\n';
+
+    return 0;
+}
