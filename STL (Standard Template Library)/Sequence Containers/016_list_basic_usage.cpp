@@ -24,5 +24,10 @@ int main()
     myList.pop_back(); // Remove from the end
     myList.pop_front(); // Remove from the beginning
 
+    for (int n : myList) {
+        std::cout << n << ' ';
+    }
+    std::cout << std::endl;
+    
     return 0;
 }
