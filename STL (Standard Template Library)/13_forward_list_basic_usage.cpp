@@ -1,4 +1,4 @@
-/// Forward list basics
+/// Forward list basics : Signly linked list
 
 #include <iostream>
 #include <forward_list>
