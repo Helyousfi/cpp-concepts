@@ -1,3 +1,20 @@
+/*
+- Implementation Details
+    1. Underlying Data Structure:
+        std::multiset is typically implemented using a 
+        self-balancing binary search tree, such as a Red-Black Tree. 
+        This provides efficient insertions, deletions, and lookups while maintaining order.
+
+    2. Properties:
+        - Ordered: Elements are stored in a sorted manner according to the comparator 
+                (by default, std::less<T>).
+        - Multiple Elements: Allows multiple elements with the same value.
+
+    3. Performance Characteristics:
+        - Insertions/Deletions: Average time complexity is O(log n).
+        - Search: Average time complexity is O(log n).
+
+*/
 #include <iostream>
 #include <set>
 
