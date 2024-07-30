@@ -16,8 +16,9 @@ This guide explains how to use GDB (GNU Debugger) with MinGW for debugging C++ p
 
 To enable debugging, you need to compile your program with the `-g` flag. This includes debugging information in the executable.
 
-```sh
-g++ -g -o myprogram myprogram.cpp```
+```
+g++ -g -o myprogram myprogram.cpp
+```
 Here:
 
 -g adds debugging information.
