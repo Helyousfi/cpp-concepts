@@ -24,3 +24,9 @@ Here:
 - -g adds debugging information.
 - -o myprogram specifies the name of the output executable.
 
+## Starting GDB
+Navigate to the directory containing your compiled program and start GDB with:
+```
+gdb myprogram
+```
+
