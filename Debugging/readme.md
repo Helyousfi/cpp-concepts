@@ -21,6 +21,6 @@ g++ -g -o myprogram myprogram.cpp
 ```
 Here:
 
--g adds debugging information.
--o myprogram specifies the name of the output executable.
+- -g adds debugging information.
+- -o myprogram specifies the name of the output executable.
 
