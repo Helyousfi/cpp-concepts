@@ -41,7 +41,8 @@ For example, to run an example from the `basics` directory:
 ```sh
 cd basics
 g++ example.cpp -o example
-./example```
+./example
+```
 
 ## Contributing
 
