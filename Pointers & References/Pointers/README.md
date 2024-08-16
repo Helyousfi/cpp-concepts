@@ -60,8 +60,6 @@ Function pointers are pointers that point to the address of a function. This is 
 Smart pointers, introduced in C++11, automatically manage memory, reducing the risk of memory leaks. This section introduces `std::unique_ptr` and `std::shared_ptr`. [View Code](10_smart_pointers.cpp)
 
 
-To check [modern C++](cpp-concepts/modern%20C++/) for more details in this matter.
-
 
 ---
 
