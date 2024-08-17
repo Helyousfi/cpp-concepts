@@ -1,4 +1,3 @@
-// 09_function_pointers.cpp
 #include <iostream>
 
 int add(int a, int b) {
