@@ -1,4 +1,3 @@
-// 06_rvalue_references.cpp
 #include <iostream>
 
 void printValue(int&& ref) { // rvalue reference
