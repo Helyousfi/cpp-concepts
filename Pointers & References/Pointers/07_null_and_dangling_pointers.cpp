@@ -1,4 +1,3 @@
-// 07_null_and_dangling_pointers.cpp
 #include <iostream>
 
 int main() {
