@@ -1,4 +1,3 @@
-// 06_void_pointers.cpp
 #include <iostream>
 
 int main() {
