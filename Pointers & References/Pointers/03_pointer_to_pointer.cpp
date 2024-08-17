@@ -1,4 +1,3 @@
-// 03_pointer_to_pointer.cpp
 #include <iostream>
 
 int main() {
