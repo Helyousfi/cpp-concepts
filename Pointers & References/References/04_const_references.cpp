@@ -1,4 +1,3 @@
-// 04_const_references.cpp
 #include <iostream>
 
 void printValue(const int& ref) {
