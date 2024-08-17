@@ -1,4 +1,3 @@
-// 05_pointers_and_functions.cpp
 #include <iostream>
 
 void increment(int* p) {
