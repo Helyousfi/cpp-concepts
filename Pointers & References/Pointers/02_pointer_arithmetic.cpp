@@ -1,4 +1,3 @@
-// 02_pointer_arithmetic.cpp
 #include <iostream>
 
 int main() {
