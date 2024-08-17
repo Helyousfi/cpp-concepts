@@ -1,4 +1,3 @@
-// 02_references_and_functions.cpp
 #include <iostream>
 
 void increment(int& ref) {
