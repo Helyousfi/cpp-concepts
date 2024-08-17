@@ -1,4 +1,3 @@
-// 04_pointers_and_arrays.cpp
 #include <iostream>
 
 int main() {
