@@ -1,4 +1,3 @@
-// 01_basics_of_pointers.cpp
 #include <iostream>
 
 int main() {
