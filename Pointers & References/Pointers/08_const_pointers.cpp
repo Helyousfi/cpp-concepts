@@ -1,4 +1,3 @@
-// 08_const_pointers.cpp
 #include <iostream>
 
 int main() {
