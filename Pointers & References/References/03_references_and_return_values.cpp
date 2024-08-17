@@ -1,4 +1,3 @@
-// 03_references_and_return_values.cpp
 #include <iostream>
 
 int& getElement(int arr[], int index) {
