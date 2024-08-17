@@ -1,4 +1,3 @@
-// 10_smart_pointers.cpp
 #include <iostream>
 #include <memory>
 
