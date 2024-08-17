@@ -1,4 +1,3 @@
-// 05_references_vs_pointers.cpp
 #include <iostream>
 
 int main() {
