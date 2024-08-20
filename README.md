@@ -1,12 +1,5 @@
 The **cpp-concepts** repository is designed to help developers understand and implement core C++ concepts. Each concept is explained with detailed comments and code examples to ensure a thorough understanding.
 
-## Features
-
-- Detailed explanations of C++ concepts
-- Practical code examples
-- Well-organized directory structure
-- Easy-to-follow documentation
-
 ## Getting Started
 
 ### Prerequisites
