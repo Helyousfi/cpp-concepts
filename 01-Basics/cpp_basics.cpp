@@ -4,7 +4,6 @@
  * - Control Structures (if-else, loops)
  * - Functions
  * - Arrays
-
  */
 
 #include <iostream>  // Required for input/output operations
