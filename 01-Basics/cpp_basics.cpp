@@ -1,7 +1,6 @@
 /*
  * Basic C++ Program: Demonstrating Basic Concepts
  * 
-
  * - Variables and Data Types
  * - Basic Input and Output
  * - Control Structures (if-else, loops)
