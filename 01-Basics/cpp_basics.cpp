@@ -1,7 +1,7 @@
 /*
  * Basic C++ Program: Demonstrating Basic Concepts
  * 
- * This program explains the fundamentals of C++ including:
+
  * - Variables and Data Types
  * - Basic Input and Output
  * - Control Structures (if-else, loops)
