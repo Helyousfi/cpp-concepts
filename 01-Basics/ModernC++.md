@@ -21,4 +21,6 @@
 - Function overloading: Multiple functions can have the same name but different parameter types.
 - Namespaces: Identifiers can be scoped inside different namespaces.
 - g++ -o myprogram myprogram.cpp -Wl,-Map=myprogram.map
+- nm is a Unix/Linux command-line utility used to display the symbol table of object file
+- nm myprogram | c++filt to demangle
 
