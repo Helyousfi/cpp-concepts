@@ -29,5 +29,5 @@
 - The type is same as the signature of the function (return type & arguments)
 - Can be used to indirectly invoke a function even if the function name is not known
 - used by algorithms and classes for optimization
-- /<ret\> (*fnptr)args = &function
+- \<ret\> (*fnptr)args = &function
 
