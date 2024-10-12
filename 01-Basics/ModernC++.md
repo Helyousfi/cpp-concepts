@@ -14,4 +14,11 @@
 - Reference : needs initializer, cannot be nullptr, boud to its referent, no storage required. 
 - Pointer : no need for initializer, can be nullptr, can point other variables, has it's own storage.
 
+# Name mangling 
+- Name mangling in C++ refers to the process by which the compiler modifies the names of functions, variables, or other identifiers to encode additional information about them
+## Why is Mangling Needed?
+- In C (and similar languages), functions have unique names, so there's no ambiguity when linking them. However, C++ allows:
+- Function overloading: Multiple functions can have the same name but different parameter types.
+- Namespaces: Identifiers can be scoped inside different namespaces.
+- g++ -o myprogram myprogram.cpp -Wl,-Map=myprogram.map
 
