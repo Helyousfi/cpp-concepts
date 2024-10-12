@@ -1,0 +1,5 @@
+- introduced in C++11
+- Syntax: for (auto element : container) where element iterates over each item in container.
+- Automatic Iteration: Iterates over each element in a container (like arrays, vectors, lists) without needing an index.
+- Read-Only or Modifiable: Use auto& element to modify the elements or const auto& element to keep them read-only.
+- Simplified Looping: Removes the need for size() or boundary conditions, making the code cleaner and easier to understand.
