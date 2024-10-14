@@ -1,4 +1,38 @@
-#Example of Deep Copy
+# Default Copy Constructor (Shallow Copy)
+If you do not explicitly define a copy constructor, the C++ compiler provides a default copy constructor that performs a shallow copy.
+## Example of Default Shallow Copy
+```cpp
+class Shallow {
+public:
+    int *data;
+
+    Shallow(int value) {
+        data = new int;
+        *data = value;
+    }
+};
+
+int main() {
+    Shallow obj1(10);
+    Shallow obj2 = obj1; // Default copy constructor (shallow copy)
+
+    // Both obj1.data and obj2.data point to the same memory
+    *obj2.data = 20;
+
+    // Now, obj1.data also reflects the change
+    std::cout << *obj1.data; // Outputs: 20
+
+    delete obj1.data; // Deleting data affects both obj1 and obj2
+    return 0;
+}
+```
+## Issues with Shallow Copy:
+- Shared Resources: Both objects share the same dynamically allocated memory.
+- Double Deletion: If both objects try to delete the same memory, it leads to undefined behavior.
+
+# Implementing a Deep Copy
+To perform a deep copy, you need to define your own copy constructor that allocates separate memory for the copied object and copies the actual data.
+## Example of Deep Copy
 ```cpp
 class Deep {
 public:
