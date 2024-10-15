@@ -109,4 +109,49 @@ Use a deep copy when your class manages resources that require ownership, such a
 - Complex Data Structures: When your class contains complex members that require independent copies.
 
 
+# Delegating Constructors
+- Allows a constructor to call another constructor
+- Replacement for common initialization
+- Reduces duplicate initialization code in multiple constructors
+```cpp
+#include <iostream>
+#include <string>
 
+class Person {
+private:
+    std::string name;
+    int age;
+
+public:
+    // Constructor that takes both name and age
+    Person(const std::string& name, int age) : name(name), age(age) {
+        std::cout << "Person created with name and age\n";
+    }
+
+    // Delegating constructor that only takes a name, assumes a default age
+    Person(const std::string& name) : Person(name, 0) { // Delegates to the constructor above
+        std::cout << "Person created with name only\n";
+    }
+
+    // Delegating constructor that takes no arguments, assumes default values
+    Person() : Person("Unknown", 0) { // Delegates to the constructor above
+        std::cout << "Person created with no details\n";
+    }
+
+    void display() const {
+        std::cout << "Name: " << name << ", Age: " << age << '\n';
+    }
+};
+
+int main() {
+    Person p1("Alice", 25);  // Calls the first constructor
+    Person p2("Bob");        // Calls the second constructor, which delegates to the first
+    Person p3;               // Calls the third constructor, which delegates to the first
+
+    p1.display();
+    p2.display();
+    p3.display();
+
+    return 0;
+}
+```
