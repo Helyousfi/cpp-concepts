@@ -171,6 +171,9 @@ public:
     // Assignment operator is also deleted
     Example& operator=(const Example&) = delete;
 
+    void setValue(int a) {}
+    void setValue(float) = delete;
+
     // Destructor is explicitly defaulted
     ~Example() = default;
 };
