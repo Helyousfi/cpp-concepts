@@ -109,7 +109,7 @@ Use a deep copy when your class manages resources that require ownership, such a
 - Complex Data Structures: When your class contains complex members that require independent copies.
 
 
-# Delegating Constructors
+# Delegating Constructors (C++11)
 - Allows a constructor to call another constructor
 - Replacement for common initialization
 - Reduces duplicate initialization code in multiple constructors
@@ -151,6 +151,35 @@ int main() {
     p1.display();
     p2.display();
     p3.display();
+
+    return 0;
+}
+```
+
+# default & deleted (C++11) 
+```cpp
+#include <iostream>
+
+class Example {
+public:
+    // Constructor is explicitly defaulted
+    Example() = default;
+
+    // Copy constructor is deleted, preventing object copying
+    Example(const Example&) = delete;
+
+    // Assignment operator is also deleted
+    Example& operator=(const Example&) = delete;
+
+    // Destructor is explicitly defaulted
+    ~Example() = default;
+};
+
+int main() {
+    Example obj1;    // This is allowed: default constructor is available.
+
+    // Example obj2 = obj1;   // Error: Copy constructor is deleted.
+    // obj1 = obj2;           // Error: Assignment operator is deleted.
 
     return 0;
 }
