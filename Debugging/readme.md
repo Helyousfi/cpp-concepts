@@ -29,4 +29,22 @@ Navigate to the directory containing your compiled program and start GDB with:
 ```
 gdb myprogram
 ```
-
+Add a break point:
+```
+break main
+```
+To run the program :
+```
+run
+```
+To step into next line :
+```
+next
+```
+Then to show the assembly :
+```
+disassemble
+```
+```
+print *p
+```
