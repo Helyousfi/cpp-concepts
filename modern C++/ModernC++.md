@@ -184,6 +184,10 @@ int main() {
     // Example obj2 = obj1;   // Error: Copy constructor is deleted.
     // obj1 = obj2;           // Error: Assignment operator is deleted.
 
+    Example ex1;
+    ex1.setValue(4);
+    ex1.setValue(4.1); // will not be invoked!
+
     return 0;
 }
 ```
