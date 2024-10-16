@@ -36,34 +36,5 @@ int main() {
     }
     inFile.close(); // Close the file after reading
 
-    // Binary files vs. Text files
-    // Writing to a binary file
-    const char* binaryFilename = "example.bin";
-    ofstream binFile(binaryFilename, ios::binary);
-    if (!binFile) {
-        cerr << "Error opening binary file for writing!" << endl;
-        return 1;
-    }
-
-    int numbers[] = {1, 2, 3, 4, 5};
-    binFile.write(reinterpret_cast<char*>(numbers), sizeof(numbers)); // Write binary data
-    binFile.close();
-
-    // Reading from a binary file
-    ifstream binInFile(binaryFilename, ios::binary);
-    if (!binInFile) {
-        cerr << "Error opening binary file for reading!" << endl;
-        return 1;
-    }
-
-    int readNumbers[5];
-    binInFile.read(reinterpret_cast<char*>(readNumbers), sizeof(readNumbers)); // Read binary data
-    cout << "Contents of the binary file:" << endl;
-    for (int num : readNumbers) {
-        cout << num << " ";
-    }
-    cout << endl;
-    binInFile.close();
-
     return 0;
 }
