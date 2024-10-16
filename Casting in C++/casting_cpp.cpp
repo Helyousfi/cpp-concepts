@@ -21,18 +21,20 @@ int main()
 	int intPi = (int)pi;
 	std::cout << "C-style cast : " << intPi << std::endl;
 
-	// Static cast
+	// Static cast :
 	int a = 65;
 	double d = static_cast<double>(a);
 	std::cout << "Static cast : " << d << std::endl;
 
-	// Dynamic cast : Safely casts pointers or references in a class hierarchy. It performs a runtime check, typically used for polymorphism.
+	// Dynamic cast : 
+	// Safely casts pointers or references in a class hierarchy. It performs a runtime check, typically used for polymorphism.
 	Base* base = new Base();
 	Derived* derived = dynamic_cast<Derived*>(base);
 	if(derived) 
 		derived->Show();
 
 	// Reinterpret cast
+	// Converts between unrelated pointer types with no safety checks. It's used in low-level operations.
 	int n = 1;
 	char* c = reinterpret_cast<char*>(&n);
 	std::cout << "Reinterpret cast : " << static_cast<int>(*c) << std::endl;
