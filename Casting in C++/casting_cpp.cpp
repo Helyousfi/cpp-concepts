@@ -26,7 +26,7 @@ int main()
 	double d = static_cast<double>(a);
 	std::cout << "Static cast : " << d << std::endl;
 
-	// Dynamic cast
+	// Dynamic cast : Safely casts pointers or references in a class hierarchy. It performs a runtime check, typically used for polymorphism.
 	Base* base = new Base();
 	Derived* derived = dynamic_cast<Derived*>(base);
 	if(derived) 
