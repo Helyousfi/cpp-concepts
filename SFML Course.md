@@ -187,3 +187,201 @@ if (event.type == sf::Event::LostFocus)
 if (event.type == sf::Event::GainedFocus)
     myGame.resume();
 ```
+## The MouseEntered and MouseLeft event
+The sf::Event::MouseEntered and sf::Event::MouseLeft events are triggered when the mouse cursor enters/leaves the window.
+
+There's no member associated with these events in the sf::Event union.
+```cpp
+if (event.type == sf::Event::MouseEntered)
+    std::cout << "the mouse cursor has entered the window" << std::endl;
+
+if (event.type == sf::Event::MouseLeft)
+    std::cout << "the mouse cursor has left the window" << std::endl;
+```
+## The JoystickButtonPressed and JoystickButtonReleased events
+The sf::Event::JoystickButtonPressed and sf::Event::JoystickButtonReleased events are triggered when a joystick button is pressed/released.
+
+SFML supports up to 8 joysticks and 32 buttons.
+
+The member associated with these events is event.joystickButton, it contains the identifier of the joystick and the index of the pressed/released button.
+```cpp
+if (event.type == sf::Event::JoystickButtonPressed)
+{
+    std::cout << "joystick button pressed!" << std::endl;
+    std::cout << "joystick id: " << event.joystickButton.joystickId << std::endl;
+    std::cout << "button: " << event.joystickButton.button << std::endl;
+}
+```
+# Keyboard, mouse and joystick
+## Keyboard
+```cpp
+if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+{
+    // left key is pressed: move our character
+    character.move(-1.f, 0.f);
+}
+```
+```cpp
+if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::Right))
+{
+    // right key is pressed: move our character
+    character.move(1.f, 0.f);
+}
+```
+## Mouse
+```cpp
+if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+{
+    // left mouse button is pressed: shoot
+    gun.fire();
+}
+```
+You can also get and set the current position of the mouse, either relative to the desktop or to a window:
+```cpp
+// get the global mouse position (relative to the desktop)
+sf::Vector2i globalPosition = sf::Mouse::getPosition();
+
+// get the local mouse position (relative to a window)
+sf::Vector2i localPosition = sf::Mouse::getPosition(window); // window is a sf::Window
+```
+```cpp
+// set the mouse position globally (relative to the desktop)
+sf::Mouse::setPosition(sf::Vector2i(10, 50));
+
+// set the mouse position locally (relative to a window)
+sf::Mouse::setPosition(sf::Vector2i(10, 50), window); // window is a sf::Window
+```
+## Joystick
+```cpp
+if (sf::Joystick::isConnected(0))
+{
+    // joystick number 0 is connected
+    ...
+}
+```
+# Graphics module
+To draw the entities provided by the graphics module, you must use a specialized window class: sf::RenderWindow. This class is derived from sf::Window, and inherits all its functions. Everything that you've learnt about sf::Window (creation, event handling, controlling the framerate, mixing with OpenGL, etc.) is applicable to sf::RenderWindow as well.
+
+On top of that, sf::RenderWindow adds high-level functions to help you draw things easily. In this tutorial we'll focus on two of these functions: clear and draw. They are as simple as their name implies: clear clears the whole window with the chosen color, and draw draws whatever object you pass to it.
+
+Here is what a typical main loop looks like with a render window:
+```cpp
+#include <SFML/Graphics.hpp>
+
+int main()
+{
+    // create the window
+    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+
+    // run the program as long as the window is open
+    while (window.isOpen())
+    {
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        // clear the window with black color
+        window.clear(sf::Color::Black);
+
+        // draw everything here...
+        // window.draw(...);
+
+        // end the current frame
+        window.display();
+    }
+
+    return 0;
+}
+```
+## Position, rotation, scale: Transforming entities
+### Position
+```cpp
+// 'entity' can be a sf::Sprite, a sf::Text, a sf::Shape or any other transformable class
+
+// set the absolute position of the entity
+entity.setPosition(10.f, 50.f);
+
+// move the entity relatively to its current position
+entity.move(5.f, 5.f);
+
+// retrieve the absolute position of the entity
+sf::Vector2f position = entity.getPosition(); // = (15, 55)
+```
+### Rotation
+```cpp
+// 'entity' can be a sf::Sprite, a sf::Text, a sf::Shape or any other transformable class
+
+// set the absolute rotation of the entity
+entity.setRotation(45.f);
+
+// rotate the entity relatively to its current orientation
+entity.rotate(10.f);
+
+// retrieve the absolute rotation of the entity
+float rotation = entity.getRotation(); // = 55
+```
+### Scale
+```cpp
+// 'entity' can be a sf::Sprite, a sf::Text, a sf::Shape or any other transformable class
+
+// set the absolute scale of the entity
+entity.setScale(4.f, 1.6f);
+
+// scale the entity relatively to its current scale
+entity.scale(0.5f, 0.5f);
+
+// retrieve the absolute scale of the entity
+sf::Vector2f scale = entity.getScale(); // = (2, 0.8)
+```
+### Origin
+```cpp
+// 'entity' can be a sf::Sprite, a sf::Text, a sf::Shape or any other transformable class
+
+// set the origin of the entity
+entity.setOrigin(10.f, 20.f);
+
+// retrieve the origin of the entity
+sf::Vector2f origin = entity.getOrigin(); // = (10, 20)
+```
+### Transforming your own classes
+```cpp
+class MyGraphicalEntity : public sf::Transformable
+{
+    // ...
+};
+
+MyGraphicalEntity entity;
+entity.setPosition(10.f, 30.f);
+entity.setRotation(110.f);
+entity.setScale(0.5f, 0.2f);
+```
+### Bounding boxes
+After transforming entities and drawing them, you might want to perform some computations using them e.g. checking for collisions.
+
+SFML entities can give you their bounding box. The bounding box is the minimal rectangle that contains all points belonging to the entity, with sides aligned to the X and Y axes.
+
+```cpp
+// get the bounding box of the entity
+sf::FloatRect boundingBox = entity.getGlobalBounds();
+
+// check collision with a point
+sf::Vector2f point = ...;
+if (boundingBox.contains(point))
+{
+    // collision!
+}
+
+// check collision with another box (like the bounding box of another entity)
+sf::FloatRect otherBox = ...;
+if (boundingBox.intersects(otherBox))
+{
+    // collision!
+}
+```
+The function is named getGlobalBounds because it returns the bounding box of the entity in the global coordinate system, i.e. after all of its transformations (position, rotation, scale) have been applied.
+There's another function that returns the bounding box of the entity in its local coordinate system (before its transformations are applied): getLocalBounds. This function can be used to get the initial size of an entity, for example, or to perform more specific calculations.
