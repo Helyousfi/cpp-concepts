@@ -28,3 +28,41 @@ int main()
     return 0;
 }
 ```
+# System module
+## Handling time
+A sf::Time value can be constructed from different source units: seconds, milliseconds and microseconds.
+```cpp
+sf::Time t1 = sf::microseconds(10000);
+sf::Time t2 = sf::milliseconds(10);
+sf::Time t3 = sf::seconds(0.01f);
+```
+Measuring time :
+```cpp
+sf::Clock clock; // starts the clock
+...
+sf::Time elapsed1 = clock.getElapsedTime();
+std::cout << elapsed1.asSeconds() << std::endl;
+clock.restart();
+...
+sf::Time elapsed2 = clock.getElapsedTime();
+std::cout << elapsed2.asSeconds() << std::endl;
+```
+# Window module
+Windows in SFML are defined by the sf::Window class. A window can be created and opened directly upon construction:
+```cpp
+#include <SFML/Window.hpp>
+
+int main()
+{
+    sf::Window window(sf::VideoMode(800, 600), "My window");
+
+    ...
+
+    return 0;
+}
+```
+- The first argument, the video mode, defines the size of the window (the inner size, without the title bar and borders). Here, we create a window with a size of 800x600 pixels.
+- The second argument is simply the title of the window.
+- This constructor accepts a third optional argument: a style, which allows you to choose which decorations and features you want.
+![image](https://github.com/user-attachments/assets/7e3fffeb-4908-486e-803f-ffe8381c5b0b)
+
