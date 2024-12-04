@@ -125,4 +125,65 @@ In other situations, you may also want your application to run at a given framer
 ```cpp
 window.setFramerateLimit(60); // call it once, after creating the window
 ```
+# Events
+Before dealing with events, it is important to understand what the sf::Event type is, and how to correctly use it. sf::Event is a union, which means that only one of its members is valid at a time (remember your C++ lesson: all the members of a union share the same memory space). The valid member is the one that matches the event type, for example event.key for a KeyPressed event. Trying to read any other member will result in an undefined behavior (most likely: random or invalid values). It is important to never try to use an event member that doesn't match its type.
 
+sf::Event instances are filled by the pollEvent (or waitEvent) function of the sf::Window class. Only these two functions can produce valid events, any attempt to use an sf::Event which was not returned by successful call to pollEvent (or waitEvent) will result in the same undefined behavior that was mentioned above.
+
+To be clear, here is what a typical event loop looks like:
+```cpp
+sf::Event event;
+
+// while there are pending events...
+while (window.pollEvent(event))
+{
+    // check the type of the event...
+    switch (event.type)
+    {
+        // window closed
+        case sf::Event::Closed:
+            window.close();
+            break;
+
+        // key pressed
+        case sf::Event::KeyPressed:
+            ...
+            break;
+
+        // we don't process other types of events
+        default:
+            break;
+    }
+}
+```
+## The Closed event
+The sf::Event::Closed event is triggered when the user wants to close the window, through any of the possible methods the window manager provides ("close" button, keyboard shortcut, etc.). This event only represents a close request, the window is not yet closed when the event is received.
+
+Typical code will just call window.close() in reaction to this event, to actually close the window. However, you may also want to do something else first, like saving the current application state or asking the user what to do. If you don't do anything, the window remains open.
+
+There's no member associated with this event in the sf::Event union.
+```cpp
+if (event.type == sf::Event::Closed)
+    window.close();
+```
+## The Resized event
+```cpp
+if (event.type == sf::Event::Resized)
+{
+    std::cout << "new width: " << event.size.width << std::endl;
+    std::cout << "new height: " << event.size.height << std::endl;
+}
+```
+## The LostFocus and GainedFocus events
+The sf::Event::LostFocus and sf::Event::GainedFocus events are triggered when the window loses/gains focus, which happens when the user switches the currently active window. When the window is out of focus, it doesn't receive keyboard events.
+
+This event can be used e.g. if you want to pause your game when the window is inactive.
+
+There's no member associated with these events in the sf::Event union.
+```cpp
+if (event.type == sf::Event::LostFocus)
+    myGame.pause();
+
+if (event.type == sf::Event::GainedFocus)
+    myGame.resume();
+```
