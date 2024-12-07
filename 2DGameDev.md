@@ -1,4 +1,4 @@
-https://unglueit-files.s3.amazonaws.com/ebf/ee0225ec966b4910a0882f4e388c8bdf.pdf
+The book : https://unglueit-files.s3.amazonaws.com/ebf/ee0225ec966b4910a0882f4e388c8bdf.pdf
 
 # SFML and Visual Studio
 - First, you must download the SFML SDK from the [download page](https://www.sfml-dev.org/download.php).
